@@ -22,7 +22,7 @@ func (q *Queue[T]) Peek() (T, bool) {
 		return zero, false
 	}
 
-	result := (*q)[len(*q)-1]
+	result := (*q)[0]
 	return result, true
 }
 func (q *Queue[T]) Contains(data T) bool {

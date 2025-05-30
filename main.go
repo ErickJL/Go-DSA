@@ -7,10 +7,22 @@ import (
 )
 
 func main() {
+	fmt.Println()
+	fmt.Println("-------------------------------------------> Stack <------------------------------------------")
 	useStack()
+	fmt.Println()
+	fmt.Println("-------------------------------------------> Queue <------------------------------------------")
 	useQueue()
+	fmt.Println()
+	fmt.Println("--------------------------------------> Priority Queue <--------------------------------------")
 	usePriorityQueue()
-	UseLinkedList()
+	fmt.Println()
+	fmt.Println("------------------------------------> Linked List Singly <------------------------------------")
+	useLinkedListSingly()
+	fmt.Println()
+	fmt.Println("------------------------------------> Linked List Doubly <------------------------------------")
+	useLinkedListDoubly()
+	fmt.Println()
 }
 
 func useStack() {
@@ -95,17 +107,36 @@ func usePriorityQueue() {
 	fmt.Println()
 	fmt.Println(s.Contains("One Piece"))
 }
-func UseLinkedList() {
-	list := dataStructure.LinkedList{}
+func useLinkedListSingly() {
+	list := dataStructure.LinkedListSingly[string]{}
 
-	list.Append(10)
-	list.Append(20)
-	list.Append(30)
+	list.Append("Naruto Shippuden")
+	list.Append("One Piece")
+	list.Append("Jujutsu Kaisen")
+	list.Append("Kuroko no Basket")
+	list.Append("One Punch Man")
 	list.Print()
 
-	list.Delete(20)
+	list.Delete("Jujutsu Kaisen")
 	list.Print()
 
-	list.InsertAt(1, 20)
+	list.InsertAt(2, "Jujutsu Kaisen")
 	list.Print()
+}
+func useLinkedListDoubly() {
+	list := dataStructure.LinkedListDoubly[string]{}
+
+	list.Append("Naruto Shippuden")
+	list.Append("One Piece")
+	list.Append("Jujutsu Kaisen")
+	list.Append("Kuroko no Basket")
+	list.Append("One Punch Man")
+	list.PrintForward()
+
+	list.Delete("Jujutsu Kaisen")
+	list.PrintForward()
+
+	list.InsertAt(2, "Jujutsu Kaisen")
+	list.PrintForward()
+	list.PrintBackward()
 }

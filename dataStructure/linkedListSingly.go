@@ -2,19 +2,19 @@ package dataStructure
 
 import "fmt"
 
-type Node struct {
-    value int
-    next  *Node
+type NodeSingly[T comparable] struct {
+    value T
+    next  *NodeSingly[T]
 }
 
-type LinkedList struct {
-    head *Node
+type LinkedListSingly[T comparable] struct {
+    head *NodeSingly[T]
 }
 
-func (l *LinkedList) Append(value int) {
-    newNode := &Node{value: value}
+func (l *LinkedListSingly[T]) Append(value T) {
+    newNodeSingly := &NodeSingly[T]{value: value}
     if l.head == nil {
-        l.head = newNode
+        l.head = newNodeSingly
         return
     }
 
@@ -22,15 +22,15 @@ func (l *LinkedList) Append(value int) {
     for current.next != nil {
         current = current.next
     }
-    current.next = newNode
+    current.next = newNodeSingly
 }
 
-func (l *LinkedList) InsertAt(index, value int) {
-    newNode := &Node{value: value}
+func (l *LinkedListSingly[T]) InsertAt(index int, value T) {
+    newNodeSingly := &NodeSingly[T]{value: value}
 
     if index == 0 {
-        newNode.next = l.head
-        l.head = newNode
+        newNodeSingly.next = l.head
+        l.head = newNodeSingly
         return
     }
 
@@ -44,20 +44,20 @@ func (l *LinkedList) InsertAt(index, value int) {
         return
     }
 
-    newNode.next = current.next
-    current.next = newNode
+    newNodeSingly.next = current.next
+    current.next = newNodeSingly
 }
 
-func (l *LinkedList) Print() {
+func (l *LinkedListSingly[T]) Print() {
     current := l.head
     for current != nil {
-        fmt.Printf("%d -> ", current.value)
+        fmt.Printf("%v -> ", current.value)
         current = current.next
     }
-    fmt.Println()
+    fmt.Println("nil")
 }
 
-func (l *LinkedList) Delete(value int) {
+func (l *LinkedListSingly[T]) Delete(value T) {
     if l.head == nil {
         return
     }

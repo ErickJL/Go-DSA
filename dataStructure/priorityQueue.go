@@ -30,7 +30,7 @@ func (q *PriorityQueue[T]) Peek() (T, bool) {
 		return zero, false
 	}
 
-	result := ((*q).Queue)[len((*q).Queue)-1]
+	result := ((*q).Queue)[0]
 	return result, true
 }
 func (q *PriorityQueue[T]) Contains(data T) bool {
