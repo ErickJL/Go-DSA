@@ -7,21 +7,24 @@ import (
 )
 
 func main() {
+	// fmt.Println()
+	// fmt.Println("-------------------------------------------> Stack <------------------------------------------")
+	// useStack()
+	// fmt.Println()
+	// fmt.Println("-------------------------------------------> Queue <------------------------------------------")
+	// useQueue()
+	// fmt.Println()
+	// fmt.Println("--------------------------------------> Priority Queue <--------------------------------------")
+	// usePriorityQueue()
+	// fmt.Println()
+	// fmt.Println("------------------------------------> Linked List Singly <------------------------------------")
+	// useLinkedListSingly()
+	// fmt.Println()
+	// fmt.Println("------------------------------------> Linked List Doubly <------------------------------------")
+	// useLinkedListDoubly()
 	fmt.Println()
-	fmt.Println("-------------------------------------------> Stack <------------------------------------------")
-	useStack()
-	fmt.Println()
-	fmt.Println("-------------------------------------------> Queue <------------------------------------------")
-	useQueue()
-	fmt.Println()
-	fmt.Println("--------------------------------------> Priority Queue <--------------------------------------")
-	usePriorityQueue()
-	fmt.Println()
-	fmt.Println("------------------------------------> Linked List Singly <------------------------------------")
-	useLinkedListSingly()
-	fmt.Println()
-	fmt.Println("------------------------------------> Linked List Doubly <------------------------------------")
-	useLinkedListDoubly()
+	fmt.Println("----------------------------------------> Dynamic Array <----------------------------------------")
+	useDynamicArray()
 	fmt.Println()
 }
 
@@ -79,10 +82,7 @@ func useQueue() {
 }
 
 func usePriorityQueue() {
-	s := dataStructure.PriorityQueue[string]{
-		Queue: make([]string, 0),
-		ReverseOrder: false,
-	} 
+	s := dataStructure.NewPriorityQueue[string](true)
 
 	fmt.Println(s.Empty())
 
@@ -139,4 +139,50 @@ func useLinkedListDoubly() {
 	list.InsertAt(2, "Jujutsu Kaisen")
 	list.PrintForward()
 	list.PrintBackward()
+}
+
+func useDynamicArray() {
+	d := dataStructure.NewDinamicArray[string]()
+
+	d.Add("Naruto Shippuden")
+	d.Add("One Piece")
+	d.Add("Jujutsu Kaisen")
+	d.Add("Kuroko no Basket")
+	d.Add("One Punch Man")
+	fmt.Println(d.ToString())
+	fmt.Printf("size: %d\n", d.Size)
+	fmt.Printf("capacity: %d\n", d.Capacity)
+	fmt.Println(d.Search("Kuroko no Basket"))
+
+	d.Delete("Kuroko no Basket")
+	fmt.Println(d.ToString())
+	fmt.Printf("size: %d\n", d.Size)
+	fmt.Printf("capacity: %d\n", d.Capacity)
+	fmt.Println(d.Search("Kuroko no Basket"))
+
+	d.Insert(3, "Kuroko no Basket")
+	fmt.Println(d.ToString())
+	fmt.Printf("size: %d\n", d.Size)
+	fmt.Printf("capacity: %d\n", d.Capacity)
+
+	d.Add("Attack on Titan")
+	fmt.Println(d.ToString())
+	fmt.Printf("size: %d\n", d.Size)
+	fmt.Printf("capacity: %d\n", d.Capacity)
+	
+	d.Add("Bleach")
+	fmt.Println(d.ToString())
+	fmt.Printf("size: %d\n", d.Size)
+	fmt.Printf("capacity: %d\n", d.Capacity)
+
+	d.Delete("Bleach")
+	fmt.Println(d.ToString())
+	fmt.Printf("size: %d\n", d.Size)
+	fmt.Printf("capacity: %d\n", d.Capacity)
+
+	d.Delete("Attack on Titan")
+	fmt.Println(d.ToString())
+	fmt.Printf("size: %d\n", d.Size)
+	fmt.Printf("capacity: %d\n", d.Capacity)
+	fmt.Printf("empty: %t\n", d.IsEmpty())
 }

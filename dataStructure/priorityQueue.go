@@ -9,6 +9,13 @@ type PriorityQueue[T Ordered] struct {
 	ReverseOrder bool
 }
 
+func NewPriorityQueue[T Ordered](reverseOrder bool) *PriorityQueue[T] {
+	return &PriorityQueue[T]{
+		Queue:        make([]T, 0),
+		ReverseOrder: reverseOrder,
+	}
+}
+
 func (q *PriorityQueue[T]) Enqueue(data T) {
 	(*q).Queue = append((*q).Queue, data)
 	q.sort()
