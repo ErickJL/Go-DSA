@@ -44,20 +44,47 @@ func main() {
 	// fmt.Println("-----------------------------------> Interpolation Search <-----------------------------------")
 	// TryInterpolationSearch(arraySearch)
 
-	// Rekursif Searching
-	arraySearch := make([]int, 10_000_000)
-	for i := 0; i < len(arraySearch); i++ {
-		arraySearch[i] = i+1
+	// Recursion Searching
+	// arraySearch := make([]int, 10_000)
+	// for i := 0; i < len(arraySearch); i++ {
+	// 	arraySearch[i] = i+1
+	// }
+	// fmt.Println()
+	// fmt.Println("----------------------------------> Recursion Linear Search <----------------------------------")
+	// TryRecursionLinearSearch(arraySearch)
+	// fmt.Println()
+	// fmt.Println("----------------------------------> Recursion Binary Search <----------------------------------")
+	// TryRecursionBinarySearch(arraySearch)
+	// fmt.Println()
+	// fmt.Println("-------------------------------> Recursion Interpolation Search <------------------------------")
+	// TryRecursionInterpolationSearch(arraySearch)
+
+	// Sorting
+	arraySort := make([]int, 1_000)
+	for i := 0; i < len(arraySort)/10; i++ {
+		arr := []int{2, 7, 5, 3, 8, 1, 10, 9, 6, 4}
+		for j := 0; j < 10; j++ {
+			arraySort[i*10+j] = arr[j]+i*10
+		}
 	}
 	fmt.Println()
-	fmt.Println("----------------------------------> Rekursif Linear Search <----------------------------------")
-	TryRekursifLinearSearch(arraySearch)
+	fmt.Println("----------------------------------------> Bubble Sort <---------------------------------------")
+	TryBubbleSort(arraySort)
 	fmt.Println()
-	fmt.Println("----------------------------------> Rekursif Binary Search <----------------------------------")
-	TryRekursifBinarySearch(arraySearch)
+	fmt.Println("--------------------------------------> Selection Sort <--------------------------------------")
+	TrySelectionSort(arraySort)
 	fmt.Println()
-	fmt.Println("-------------------------------> Rekursif Interpolation Search <------------------------------")
-	TryRekursifInterpolationSearch(arraySearch)
+	fmt.Println("--------------------------------------> Insertion Sort <--------------------------------------")
+	TryInsertionSort(arraySort)
+	fmt.Println()
+	fmt.Println("-----------------------------------> Recursion Bubble Sort <-----------------------------------")
+	TryRecursionBubbleSort(arraySort)
+	fmt.Println()
+	fmt.Println("----------------------------------> Recursion Selection Sort <---------------------------------")
+	TryRecursionSelectionSort(arraySort)
+	fmt.Println()
+	fmt.Println("---------------------------------> Recursion Insertion Sort <---------------------------------")
+	TryRecursionInsertionSort(arraySort)
 	fmt.Println()
 }
 
@@ -254,11 +281,11 @@ func TryInterpolationSearch(array []int) {
 	}
 }
 
-// Rekursif Search
-func TryRekursifLinearSearch(array []int) {
+// Recursion Search
+func TryRecursionLinearSearch(array []int) {
 	
 	start := time.Now()
-	index := algorithms.RekursifLinearSearch(array, 7_777_777)
+	index := algorithms.RecursionLinearSearch(array, 7_777_777)
 	duration := time.Since(start)
 	fmt.Println("Duration:", duration.Nanoseconds(), "ns")
 	if index != -1 {
@@ -267,9 +294,9 @@ func TryRekursifLinearSearch(array []int) {
 		fmt.Println("Element not found")
 	}
 }
-func TryRekursifBinarySearch(array []int) {
+func TryRecursionBinarySearch(array []int) {
 	start := time.Now()
-	index := algorithms.RekursifBinarySearch(array, 7_777_777)
+	index := algorithms.RecursionBinarySearch(array, 7_777_777)
 	duration := time.Since(start)
 	fmt.Println("Duration:", duration.Nanoseconds(), "ns")
 	if index != -1 {
@@ -278,9 +305,9 @@ func TryRekursifBinarySearch(array []int) {
 		fmt.Println("Element not found")
 	}
 }
-func TryRekursifInterpolationSearch(array []int) {
+func TryRecursionInterpolationSearch(array []int) {
 	start := time.Now()
-	index := algorithms.RekursifInterpolationSearch(array, 7_777_777)
+	index := algorithms.RecursionInterpolationSearch(array, 7_777_777)
 	duration := time.Since(start)
 	fmt.Println("Duration:", duration.Nanoseconds(), "ns")
 	if index != -1 {
@@ -288,4 +315,50 @@ func TryRekursifInterpolationSearch(array []int) {
 	} else {
 		fmt.Println("Element not found")
 	}
+}
+
+// Sort
+func TryBubbleSort(array []int) {
+	start := time.Now()
+	algorithms.BubbleSort(&array, false, false)
+	duration := time.Since(start)
+	fmt.Println("Duration:", duration.Nanoseconds(), "ns")
+	// fmt.Println(array)
+}
+func TrySelectionSort(array []int) {
+	start := time.Now()
+	algorithms.SelectionSort(&array, false, false)
+	duration := time.Since(start)
+	fmt.Println("Duration:", duration.Nanoseconds(), "ns")
+	// fmt.Println(array)
+}
+func TryInsertionSort(array []int) {
+	start := time.Now()
+	algorithms.InsertionSort(&array, false, false)
+	duration := time.Since(start)
+	fmt.Println("Duration:", duration.Nanoseconds(), "ns")
+	// fmt.Println(array)
+}
+
+// Recursion Sort
+func TryRecursionBubbleSort(array []int) {
+	start := time.Now()
+	algorithms.RecursionBubbleSort(&array, false, false)
+	duration := time.Since(start)
+	fmt.Println("Duration:", duration.Nanoseconds(), "ns")
+	// fmt.Println(array)
+}
+func TryRecursionSelectionSort(array []int) {
+	start := time.Now()
+	algorithms.RecursionSelectionSort(&array, false, false)
+	duration := time.Since(start)
+	fmt.Println("Duration:", duration.Nanoseconds(), "ns")
+	// fmt.Println(array)
+}
+func TryRecursionInsertionSort(array []int) {
+	start := time.Now()
+	algorithms.RecursionInsertionSort(&array, false, false)
+	duration := time.Since(start)
+	fmt.Println("Duration:", duration.Nanoseconds(), "ns")
+	// fmt.Println(array)
 }

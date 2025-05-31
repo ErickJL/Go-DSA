@@ -1,6 +1,6 @@
 package algorithms
 
-func RekursifLinearSearch[T Ordered](array []T, value T) int {
+func RecursionLinearSearch[T Ordered](array []T, value T) int {
 	return helperLinearSearch(array, value, 0)
 }
 func helperLinearSearch[T Ordered](array []T, value T, index int) int {
@@ -12,7 +12,7 @@ func helperLinearSearch[T Ordered](array []T, value T, index int) int {
 	}
 	return helperLinearSearch(array, value, index+1)
 }
-func RekursifBinarySearch[T Ordered](array []T, value T) int {
+func RecursionBinarySearch[T Ordered](array []T, value T) int {
 	return helperBinarySearch(array, value, 0, len(array)-1)
 }
 func helperBinarySearch[T Ordered](array []T, value T, low, high int) int {
@@ -29,7 +29,7 @@ func helperBinarySearch[T Ordered](array []T, value T, low, high int) int {
 		return middle
 	}
 }
-func RekursifInterpolationSearch(array []int, value int) int {
+func RecursionInterpolationSearch(array []int, value int) int {
 	return helperInterpolationSearch(array, value, 0, len(array)-1)
 }
 func helperInterpolationSearch(array []int, value int, low, high int) int {
