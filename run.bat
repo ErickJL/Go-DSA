@@ -16,7 +16,7 @@ go build -o %BIN_DIR%\%OUTPUT_NAME% main.go
 
 REM check if build is error
 if %errorlevel% neq 0 (
-    echo Build gagal.
+    echo Build failed.
     exit /b %errorlevel%
 )
 

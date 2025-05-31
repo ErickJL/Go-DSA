@@ -2,33 +2,67 @@ package main
 
 import (
 	"fmt"
+	"time"
 
+	"github.com/ErickJL/Go-DSA/algorithms"
 	"github.com/ErickJL/Go-DSA/dataStructure"
 )
 
 func main() {
+	// Data Structure
 	// fmt.Println()
 	// fmt.Println("-------------------------------------------> Stack <------------------------------------------")
-	// useStack()
+	// UseStack()
 	// fmt.Println()
 	// fmt.Println("-------------------------------------------> Queue <------------------------------------------")
-	// useQueue()
+	// UseQueue()
 	// fmt.Println()
 	// fmt.Println("--------------------------------------> Priority Queue <--------------------------------------")
-	// usePriorityQueue()
+	// UsePriorityQueue()
 	// fmt.Println()
 	// fmt.Println("------------------------------------> Linked List Singly <------------------------------------")
-	// useLinkedListSingly()
+	// UseLinkedListSingly()
 	// fmt.Println()
 	// fmt.Println("------------------------------------> Linked List Doubly <------------------------------------")
-	// useLinkedListDoubly()
+	// UseLinkedListDoubly()
+	// fmt.Println()
+	// fmt.Println("--------------------------------------> Dynamic Array <---------------------------------------")
+	// UseDynamicArray()
+
+	// Searching
+	// arraySearch := make([]int, 10_000_000)
+	// for i := 0; i < len(arraySearch); i++ {
+	// 	arraySearch[i] = i+1
+	// }
+	// fmt.Println()
+	// fmt.Println("--------------------------------------> Linear Search <---------------------------------------")
+	// TryLinearSearch(arraySearch)
+	// fmt.Println()
+	// fmt.Println("--------------------------------------> Binary Search <---------------------------------------")
+	// TryBinarySearch(arraySearch)
+	// fmt.Println()
+	// fmt.Println("-----------------------------------> Interpolation Search <-----------------------------------")
+	// TryInterpolationSearch(arraySearch)
+
+	// Rekursif Searching
+	arraySearch := make([]int, 10_000_000)
+	for i := 0; i < len(arraySearch); i++ {
+		arraySearch[i] = i+1
+	}
 	fmt.Println()
-	fmt.Println("----------------------------------------> Dynamic Array <----------------------------------------")
-	useDynamicArray()
+	fmt.Println("----------------------------------> Rekursif Linear Search <----------------------------------")
+	TryRekursifLinearSearch(arraySearch)
+	fmt.Println()
+	fmt.Println("----------------------------------> Rekursif Binary Search <----------------------------------")
+	TryRekursifBinarySearch(arraySearch)
+	fmt.Println()
+	fmt.Println("-------------------------------> Rekursif Interpolation Search <------------------------------")
+	TryRekursifInterpolationSearch(arraySearch)
 	fmt.Println()
 }
 
-func useStack() {
+// Data Structure
+func UseStack() {
 	var s dataStructure.Stack[string]
 
 	fmt.Println(s.Empty())
@@ -53,8 +87,7 @@ func useStack() {
 	fmt.Println()
 	fmt.Println(s.Search("One Piece"))
 }
-
-func useQueue() {
+func UseQueue() {
 	var s dataStructure.Queue[string]
 
 	fmt.Println(s.Empty())
@@ -80,8 +113,7 @@ func useQueue() {
 	fmt.Println()
 	fmt.Println(s.Contains("One Piece"))
 }
-
-func usePriorityQueue() {
+func UsePriorityQueue() {
 	s := dataStructure.NewPriorityQueue[string](true)
 
 	fmt.Println(s.Empty())
@@ -107,7 +139,7 @@ func usePriorityQueue() {
 	fmt.Println()
 	fmt.Println(s.Contains("One Piece"))
 }
-func useLinkedListSingly() {
+func UseLinkedListSingly() {
 	list := dataStructure.LinkedListSingly[string]{}
 
 	list.Append("Naruto Shippuden")
@@ -123,7 +155,7 @@ func useLinkedListSingly() {
 	list.InsertAt(2, "Jujutsu Kaisen")
 	list.Print()
 }
-func useLinkedListDoubly() {
+func UseLinkedListDoubly() {
 	list := dataStructure.LinkedListDoubly[string]{}
 
 	list.Append("Naruto Shippuden")
@@ -140,8 +172,7 @@ func useLinkedListDoubly() {
 	list.PrintForward()
 	list.PrintBackward()
 }
-
-func useDynamicArray() {
+func UseDynamicArray() {
 	d := dataStructure.NewDinamicArray[string]()
 
 	d.Add("Naruto Shippuden")
@@ -185,4 +216,76 @@ func useDynamicArray() {
 	fmt.Printf("size: %d\n", d.Size)
 	fmt.Printf("capacity: %d\n", d.Capacity)
 	fmt.Printf("empty: %t\n", d.IsEmpty())
+}
+
+// Search
+func TryLinearSearch(array []int) {
+	
+	start := time.Now()
+	index := algorithms.LinearSearch(array, 7_777_777)
+	duration := time.Since(start)
+	fmt.Println("Duration:", duration.Nanoseconds(), "ns")
+	if index != -1 {
+		fmt.Printf("Element found at index: %d\n", index)
+	} else {
+		fmt.Println("Element not found")
+	}
+}
+func TryBinarySearch(array []int) {
+	start := time.Now()
+	index := algorithms.BinarySearch(array, 7_777_777)
+	duration := time.Since(start)
+	fmt.Println("Duration:", duration.Nanoseconds(), "ns")
+	if index != -1 {
+		fmt.Printf("Element found at index: %d\n", index)
+	} else {
+		fmt.Println("Element not found")
+	}
+}
+func TryInterpolationSearch(array []int) {
+	start := time.Now()
+	index := algorithms.InterpolationSearch(array, 7_777_777)
+	duration := time.Since(start)
+	fmt.Println("Duration:", duration.Nanoseconds(), "ns")
+	if index != -1 {
+		fmt.Printf("Element found at index: %d\n", index)
+	} else {
+		fmt.Println("Element not found")
+	}
+}
+
+// Rekursif Search
+func TryRekursifLinearSearch(array []int) {
+	
+	start := time.Now()
+	index := algorithms.RekursifLinearSearch(array, 7_777_777)
+	duration := time.Since(start)
+	fmt.Println("Duration:", duration.Nanoseconds(), "ns")
+	if index != -1 {
+		fmt.Printf("Element found at index: %d\n", index)
+	} else {
+		fmt.Println("Element not found")
+	}
+}
+func TryRekursifBinarySearch(array []int) {
+	start := time.Now()
+	index := algorithms.RekursifBinarySearch(array, 7_777_777)
+	duration := time.Since(start)
+	fmt.Println("Duration:", duration.Nanoseconds(), "ns")
+	if index != -1 {
+		fmt.Printf("Element found at index: %d\n", index)
+	} else {
+		fmt.Println("Element not found")
+	}
+}
+func TryRekursifInterpolationSearch(array []int) {
+	start := time.Now()
+	index := algorithms.RekursifInterpolationSearch(array, 7_777_777)
+	duration := time.Since(start)
+	fmt.Println("Duration:", duration.Nanoseconds(), "ns")
+	if index != -1 {
+		fmt.Printf("Element found at index: %d\n", index)
+	} else {
+		fmt.Println("Element not found")
+	}
 }
